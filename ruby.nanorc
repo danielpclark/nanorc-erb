@@ -1,0 +1,32 @@
+## Here is an example for Ruby.
+##
+syntax "ruby" "\.rb$"
+header "^#!.*/ruby[-0-9._]*"
+## Asciibetical list of reserved words
+color yellow "\<(BEGIN|END|alias|and|begin|break|case|class|def|defined\?|do|else|elsif|end|ensure|false|for|if|in|module|next|nil|not|or|redo|rescue|retry|return|self|super|then|true|undef|unless|until|when|while|yield)\>"
+color brightgreen "\<(map|map!|permutation|repeated_permutation|select|select!|sort_by!|reject|reject!|delete_if|drop|drop_while|collect|collect!|combination|repeated_combination|cycle|each|reverse_each|rindex|each_index|each_with_index|each_with_object|feed|inspect|index|next|next_values|peek|peek_values|rewind|with_index|with_object|keep_if|take_while)\>"
+## Constants
+color brightblue "(\$|@|@@)?\<[A-Z]+[0-9A-Z_a-z]*"
+## Ruby "symbols"
+icolor magenta "([ 	]|^):[0-9A-Z_]+\>"
+## Some unique things we want to stand out
+color brightyellow "\<(__FILE__|__LINE__)\>"
+## Regular expressions
+color brightmagenta "/([^/]|(\\/))*/[iomx]*" "%r\{([^}]|(\\}))*\}[iomx]*"
+## Shell command expansion is in `backticks` or like %x{this}.  These are
+## "double-quotish" (to use a perlism).
+color brightblue "`[^`]*`" "%x\{[^}]*\}"
+## Strings, double-quoted
+color green ""([^"]|(\\"))*"" "%[QW]?\{[^}]*\}" "%[QW]?\([^)]*\)" "%[QW]?<[^>]*>" "%[QW]?\[[^]]*\]" "%[QW]?\$[^$]*\$" "%[QW]?\^[^^]*\^" "%[QW]?![^!]*!"
+## Expression substitution.  These go inside double-quoted strings,
+## "like #{this}".
+color brightgreen "#\{[^}]*\}"
+## Strings, single-quoted
+color green "'([^']|(\\'))*'" "%[qw]\{[^}]*\}" "%[qw]\([^)]*\)" "%[qw]<[^>]*>" "%[qw]\[[^]]*\]" "%[qw]\$[^$]*\$" "%[qw]\^[^^]*\^" "%[qw]![^!]*!"
+## Comments
+color cyan "#[^{].*$" "#$"
+color brightcyan "##[^{].*$" "##$"
+## "Here" docs
+color green start="<<-?'?EOT'?" end="^EOT"
+## Some common markers
+color brightcyan "(XXX|TODO|FIXME|\?\?\?)"
