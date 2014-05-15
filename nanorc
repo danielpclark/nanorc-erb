@@ -298,3 +298,6 @@ include "/usr/share/nano/pov.nanorc"
 
 ## XML-type files
 include "/usr/share/nano/xml.nanorc"
+
+## YAML
+include "/usr/share/nano/yaml.nanorc"
